@@ -1,0 +1,9 @@
+{
+    "manifest_version": 3,
+    "name": "Web Page Count",
+    "description": "Counts the amount of times you have visited a specific web page",
+    "version": "1.0",
+    "action": {
+      "default_popup": "text.html"
+    }
+  }
