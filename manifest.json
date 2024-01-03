@@ -5,5 +5,18 @@
     "version": "1.0",
     "action": {
       "default_popup": "text.html"
-    }
+    },
+    "permissions": [
+        "storage", "tabs", "activeTab", "webNavigation", "scripting"
+    ],
+    "content_scripts": [
+        {
+        "matches": ["<all_urls>"],
+        "run_at": "document_end",
+        "js": ["content.js"]
+        }
+    ],
+    "host_permissions": [
+      "*://*/*"
+    ]
   }
