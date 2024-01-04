@@ -14,5 +14,24 @@ const getValue = (getKeyValue) => {
 getValue(function(value) {
         p = document.createElement("p");
         p.innerHTML = value;
-        document.body.appendChild(p);
+        container.appendChild(p);
+
+        var b = document.createElement('button');
+        b.innerHTML = "Reset";
+        container.appendChild(b);
+        b.addEventListener('click', function() {
+            onButtonClicked();
+        });
 });
+
+function onButtonClicked (){
+    chrome.tabs.query({active: true, currentWindow: true }, function (tabs) {
+        var tab = tabs[0];
+        var tabUrl = tab.url;
+        var obj = {};
+        obj[tabUrl] = 1; 
+        chrome.storage.sync.set(obj, function() {
+            window.location.reload();
+        });
+    });
+}
